@@ -8,6 +8,7 @@ SHARED_BUFFERS=${SHARED_BUFFERS:-"2GB"}
 PG_PASSWORD=${PG_PASSWORD:-"postgres"}
 WHITELIST_NETWORKS=${WHITELIST_NETWORKS:-"10.0.0.0/8,192.168.0.0/16"}
 
+mkdir /etc/ssl/private-copy; mv /etc/ssl/private/* /etc/ssl/private-copy/; rm -r /etc/ssl/private; mv /etc/ssl/private-copy /etc/ssl/private; chmod -R 0700 /etc/ssl/private; chown -R postgres /etc/ssl/private
 
 #apply memory settings to config file
 sed -i "s/\*\*SHARED_BUFFERS\*\*/$SHARED_BUFFERS/" $CONFIG_PATH/postgresql.conf
