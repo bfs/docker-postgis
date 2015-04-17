@@ -3,11 +3,9 @@
 #defaults
 POSTGRES="/usr/lib/postgresql/9.3/bin/postgres"
 CONFIG_PATH="/etc/postgresql/9.3/main/"
+
 SHARED_BUFFERS=${SHARED_BUFFERS:-"2GB"}
 PG_PASSWORD=${PG_PASSWORD:-"postgres"}
-
-
-SHARED_BUFFERS=${SHARED_BUFFERS:-"2GB"}
 WHITELIST_NETWORKS=${WHITELIST_NETWORKS:-"10.0.0.0/8,192.168.0.0/16"}
 
 
