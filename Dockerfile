@@ -6,7 +6,6 @@ ADD pg_hba.conf /etc/postgresql/9.3/main/pg_hba.conf
 ADD postgresql.conf /etc/postgresql/9.3/main/postgresql.conf
 
 RUN mkdir -p /data
-RUN chown -R postgres /data
 
 VOLUME ["/data"]
 

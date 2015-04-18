@@ -19,6 +19,7 @@ for n in $(echo $WHITELIST_NETWORKS | tr "," " "); do
 done
 
 #initialize the database (or fail) at /data/
+chown -R postgres /data
 su - postgres  -c "/usr/lib/postgresql/9.3/bin/initdb -D /data"
 
 #set default password
