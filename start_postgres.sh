@@ -18,6 +18,9 @@ for n in $(echo $WHITELIST_NETWORKS | tr "," " "); do
   echo "host    all             all             $n             md5" >> $CONFIG_PATH/pg_hba.conf
 done
 
+#initialize the database (or fail) at /data/
+su - postgres  -c "/usr/lib/postgresql/9.3/bin/initdb -D /data"
+
 #set default password
 su - postgres -c "$POSTGRES --single -c config_file=$CONFIG_PATH/postgresql.conf <<< \"ALTER USER postgres WITH PASSWORD '$PG_PASSWORD';\""
 
