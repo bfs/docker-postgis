@@ -1,8 +1,8 @@
 #!/bin/bash
 
 #defaults
-POSTGRES="/usr/lib/postgresql/9.3/bin/postgres"
-CONFIG_PATH="/etc/postgresql/9.3/main/"
+POSTGRES="/usr/lib/postgresql/9.4/bin/postgres"
+CONFIG_PATH="/etc/postgresql/9.4/main/"
 
 SHARED_BUFFERS=${SHARED_BUFFERS:-"2GB"}
 PG_PASSWORD=${PG_PASSWORD:-"postgres"}
@@ -20,7 +20,7 @@ done
 
 #initialize the database (or fail) at /data/
 chown -R postgres /data
-su - postgres  -c "/usr/lib/postgresql/9.3/bin/initdb -D /data"
+su - postgres  -c "/usr/lib/postgresql/9.4/bin/initdb -D /data"
 
 #set default password
 su - postgres -c "$POSTGRES --single -c config_file=$CONFIG_PATH/postgresql.conf <<< \"ALTER USER postgres WITH PASSWORD '$PG_PASSWORD';\""
