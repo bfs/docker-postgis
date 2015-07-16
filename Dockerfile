@@ -5,7 +5,7 @@ RUN apt-get install wget
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 RUN sudo apt-get update
 
-RUN apt-get update && apt-get install -y postgresql-9.4 postgresql-contrib-9.4 libgdal1-dev postgis postgresql-9.4-postgis-2.1
+RUN apt-get update && apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgis postgresql-9.4-postgis-2.1
 
 ADD pg_hba.conf /etc/postgresql/9.4/main/pg_hba.conf 
 ADD postgresql.conf /etc/postgresql/9.4/main/postgresql.conf
