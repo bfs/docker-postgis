@@ -12,6 +12,13 @@ ADD postgresql.conf /etc/postgresql/9.4/main/postgresql.conf
 
 RUN mkdir -p /data
 
+ENV PG_VERSION=9.4
+
+ENV POSTGRES="/usr/lib/postgresql/$PG_VERSION/bin/postgres"
+ENV CONFIG_PATH="/etc/postgresql/$PG_VERSION/main/"
+
 VOLUME ["/data"]
 
-ADD start_postgres.sh /etc/my_init.d/start_postgres.sh
+ADD configure_postgres.sh /etc/my_init.d/01_configure_postgres
+ADD bootstrap.sh /etc/my_init.d/09_bootstrap
+ADD start_postgres.sh /etc/my_init.d/99_start_postgres
