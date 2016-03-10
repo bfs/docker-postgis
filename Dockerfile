@@ -5,14 +5,24 @@ RUN apt-get install wget
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
 RUN sudo apt-get update
 
-RUN apt-get update && apt-get install -y postgresql-9.4 postgresql-contrib-9.4 postgis postgresql-9.4-postgis-2.1
+ENV PG_VERSION=9.5
+ENV POSTGIS_VERSION=2.2
 
-ADD pg_hba.conf /etc/postgresql/9.4/main/pg_hba.conf 
-ADD postgresql.conf /etc/postgresql/9.4/main/postgresql.conf
+RUN apt-get update && apt-get install -y postgresql-$PG_VERSION postgresql-contrib-$PG_VERSION postgis postgresql-$PG_VERSION-postgis-$POSTGIS_VERSION
+
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+
+ADD pg_hba.conf /etc/postgresql/$PG_VERSION/main/pg_hba.conf 
+ADD postgresql.conf /etc/postgresql/$PG_VERSION/main/postgresql.conf
+
+RUN sed -i "s/{{PG_VERSION}}/$PG_VERSION/" /etc/postgresql/$PG_VERSION/main/postgresql.conf
+
+RUN cat /etc/postgresql/$PG_VERSION/main/postgresql.conf
 
 RUN mkdir -p /data
 
-ENV PG_VERSION=9.4
+
 
 ENV POSTGRES="/usr/lib/postgresql/$PG_VERSION/bin/postgres"
 ENV CONFIG_PATH="/etc/postgresql/$PG_VERSION/main/"

@@ -17,7 +17,7 @@ done
 
 #initialize the database (or fail) at /data/
 chown -R postgres /data
-su - postgres  -c "/usr/lib/postgresql/9.4/bin/initdb -D /data"
+su - postgres  -c "/usr/lib/postgresql/$PG_VERSION/bin/initdb -D /data"
 
 #set default password
 su - postgres -c "$POSTGRES --single -c config_file=$CONFIG_PATH/postgresql.conf <<< \"ALTER USER postgres WITH PASSWORD '$PG_PASSWORD';\""
