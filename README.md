@@ -1,6 +1,6 @@
 # docker-postgis
 
-Docker build for postgis 2.1/2.2 and postgres 9.4/9.5
+Docker build for postgis 2.1/2.2i/2.3 and postgres 9.4/9.5/9.6
 
 ## Environment Variables
 
