@@ -1,7 +1,7 @@
 FROM boritzio/docker-base
 
-ENV PG_VERSION=9.5
-ENV POSTGIS_VERSION=2.2
+ENV PG_VERSION=9.6
+ENV POSTGIS_VERSION=2.3
 
 #postgres
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ "$(lsb_release -sc)"-pgdg main" >> /etc/apt/sources.list.d/pgdg.list
